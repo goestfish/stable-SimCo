@@ -6,6 +6,14 @@ Towards Understanding and Simplifying MoCo (CVPR 2022)](https://arxiv.org/abs/22
 The numerical reference is the authors' [loss](https://github.com/ChaoningZhang/Dual-temperature/blob/e8d5e768255721b23643d948631f80c0b8a0851b/solo/losses/dual_temperature_loss.py)
 and [SimCo method](https://github.com/ChaoningZhang/Dual-temperature/blob/e8d5e768255721b23643d948631f80c0b8a0851b/solo/methods/simco_dual_temperature.py).
 
+```{figure} ../figures/simco_overview.svg
+:alt: Two independently augmented views use a shared encoder and projector; normalized projections are gathered across ranks for the symmetric dual-temperature SimCo loss.
+:width: 100%
+
+SimCo overview. Both views receive gradients; only the dual-temperature hardness
+ratio is detached. The online probe uses detached encoder features.
+```
+
 ## Objective and framework wiring
 
 For row-normalized projections `Q, K`, form `S = Q @ K.T`. Matching rows
